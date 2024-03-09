@@ -80,6 +80,15 @@ interface RequiredConfig {
 type ReadonlyType = Readonly<{ a: number; b: string; d: { e: boolean } }>;
 // type ReadonlyType = { readonly a: number; readonly b: string; readonly d: { e: boolean; }; }
 
+interface CustomPerson {
+  name: string;
+}
+const customPerson: CustomPerson = { name: 'Stanislau' };
+function changeName(person: Readonly<CustomPerson>) {
+//   person.name = 'dsadsadasdsadsas'; // Cannot assign to 'name' because it is a read-only property.ts(2540)
+}
+changeName(customPerson);
+
 /**
  * Parameters
  */
@@ -162,8 +171,7 @@ const componentInstance = defineComponent({
  * Uppercase | Lowercase | Capitalize | Uncapitalize
  */
 
-type TestUppercase = Uppercase<"abcdef">; // === type TestUppercase = "ABCDEF"
-type TestLowercase = Lowercase<"ABCDEF">; // === type TestLowercase = "abcdef"
-type TestCapitalize = Capitalize<"abcdef">; // === type TestCapitalize = "Abcdef"
-type TestUncapitalize = Uncapitalize<"Abcdef">; // === type TestUncapitalize = "abcdef"
-
+type TestUppercase = Uppercase<'abcdef'>; // === type TestUppercase = "ABCDEF"
+type TestLowercase = Lowercase<'ABCDEF'>; // === type TestLowercase = "abcdef"
+type TestCapitalize = Capitalize<'abcdef'>; // === type TestCapitalize = "Abcdef"
+type TestUncapitalize = Uncapitalize<'Abcdef'>; // === type TestUncapitalize = "abcdef"
