@@ -19,3 +19,19 @@ const cityAge = getPropertyValue(city, 'age');
 
 const cityName = getCityPropertyValue('name');
 // const cityName = getCityPropertyValue('code'); // error - Argument of type '"code"' is not assignable to parameter of type 'keyof City'.ts(2345)
+
+/**
+ * A new type following the example of another
+ */
+
+interface FormControl<T> {}
+
+type Dog = {
+  name: string;
+  age: number;
+  color: string;
+}
+
+type DogForm = {
+  [K in keyof Dog]: FormControl<Dog[K]>
+}
